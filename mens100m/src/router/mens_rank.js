@@ -1,14 +1,14 @@
-
 const express = require('express');
-const router = express.Router();
-const MensRaking = require('../mens100m/src/models/mens');
+const router = new express.Router();
+const MensRanking = require('../models/mens');
 const mongoose = require('mongoose');
+
 
 
 // saving the data into database through API(Post)
 router.post("/mens", async(req, res)=>{
     try{
-        const new_user = new MensRaking(req.body);
+        const new_user = new MensRanking(req.body);
         console.log(req.body);
        const new_Entry = await new_user.save();
        res.status(201).send(new_Entry);
